@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p>
+      <table>
+        <thead>
+          <tr>
+            <td>Nome</td>
+            <td>Idade</td>
+            <td>Região</td>
+            <td>Acões</td>
+          </tr>
+        </thead>
+        <tbody>
+             <% customers.forEach(item => {
+             %>
+          <tr>
+            <td><%= item.nome %></td>
+            <td><%= item.idade %></td>
+            <td><%= item.cidade %> <%= item.uf %></td>
+           </tr>
+         <% }) %>
+        </tbody>
+      </table>
+      <ul>
+        
+      
+        
+      </ul>
+    </p>
+    <br>
+    <a href="/new">Cadastrar novo</a>
+  </body>
+</html>

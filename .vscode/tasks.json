@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "atividade2",
+			"problemMatcher": [],
+			"label": "npm: start - atividade2",
+			"detail": "node ./bin/www"
+		}
+	]
+}
