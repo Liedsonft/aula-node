@@ -20,10 +20,10 @@ router.get ('/new', (request, response)=>{
 
 router.post  ('/new', (request, response) => {
   if (!request.body.nome)
-  return response.redirect ("/?error = O campo nome é obrigatório")
+  return response.redirect ("/new?error = O campo nome é obrigatório")
 
   if (request.body.idade && !/[0-9]+/.test(request.body.idade))
-  return response.redirect ("/?error = O campo idade é numérico")
+  return response.redirect ("/new?error = O campo idade é numérico")
   
   const nome = request.body.nome;
   const idade = parseInt(request.body.idade);
