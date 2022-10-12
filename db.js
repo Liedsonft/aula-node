@@ -2,7 +2,7 @@ const ObjectId = require ("mongodb").ObjectId;
 const mongoClient = require("mongodb").MongoClient;
 mongoClient.connect("mongodb://localhost:27017",)
                 .then(connection => {
-                    global.connection = connection.db("familia");
+                    global.connection = connection.db("livro");
                     console.log("Conectamos ao MongoDB");
                 })
                 
@@ -12,25 +12,25 @@ mongoClient.connect("mongodb://localhost:27017",)
 
 function findCustomers(){
 return global.connection
-    .collection("membros")
+    .collection("livros")
     .find({})
     .toArray()
 }
 function insertCustomers (customer) {
     return global.connection
-    .collection ("membros")
+    .collection ("livros")
     .insertOne (customer)
 }
 function updateCustomers (id, customer) {
     const objectId = new Objectid(id)
     return global.connection
-    .collection("membros")
+    .collection("livros")
     .updateOne({_id: objectId}, {$set: customer})
 }
 function deleteCustomers (id){
     const objectId = new Objectid(id)
     return global.connection
-    .collection ("membros")
+    .collection ("livros")
     .deleteOne ({_id: objectId})
 }
 

@@ -1,6 +1,6 @@
 const { response } = require('express');
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const db = require("../db");
 
 /* GET home page. */
@@ -19,17 +19,17 @@ router.get ('/new', (request, response)=>{
 })
 
 router.post  ('/new', (request, response) => {
-  if (!request.body.nome)
-  return response.redirect ("/new?error = O campo nome é obrigatório")
+  if (!request.body.titulo)
+  return response.redirect ("/new?error = O campo título é obrigatório")
 
-  if (request.body.idade && !/[0-9]+/.test(request.body.idade))
+  if (request.body.ano && !/[0-9]+/.test(request.body.ano))
   return response.redirect ("/new?error = O campo idade é numérico")
   
-  const nome = request.body.nome;
-  const idade = parseInt(request.body.idade);
-  const cidade = request.body.cidade;
-  const uf = request.body.uf.length > 2 ? '' : request.body.uf;
-  db.insertCustomers ({nome, idade, cidade, uf})
+  const titulo = request.body.titulo;
+  const ano = parseInt(request.body.ano);
+  const autor = request.body.autor;
+
+  db.insertCustomers ({titulo, ano, autor})
     .then (result => {
       result.redirect ("/")
     })
