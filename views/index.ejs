@@ -5,26 +5,42 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1 style="color: blanchedalmond;"><%= title %></h1>
     <p>
       <table>
         <thead>
           <tr>
-            <td>Título</td>
-            <td>Ano</td>
+            <td >Título</td>
             <td>Autor</td>
+            <td>Ano</td>
             <td>Acões</td>
-          </tr>
+            <td>Filtros</td>
+            <td><a href="?titulo=-1 "> Z-A </a></td>
+            <td><a href="?titulo=1"> A-Z </a></td>
+            <td><a href="?ano=1&titulo=1"> 1-9 </a></td>
+            <td><a href="?ano=-1"> 9-1 </a></td>
+          </tr> 
         </thead>
         <tbody>
              <% customers.forEach(item => {
              %>
+
           <tr>
-            <td><%= item.titulo %></td>
-            <td><%= item.ano %></td>
-            <td><%= item.autor %></td>
+            <td> <a href="/edit/<%= item._id %>" ><%= item.titulo %> </a></td>
+            <td> <a href="/edit/<%= item._id %>" ><%= item.autor %> </a></td>
+            <td> <a href="/edit/<%= item._id %>" ><%= item.ano %> </a></td>
+            
+            <td>
+              <a href="/edit/<%=item._id %>" title="Editar"> 
+                <img src="/imagens/352547_edit_mode_icon (2).png" />
+              </a>
+              <a href="/delete/<%=item._id %>" title="Excluir" 
+                onclick="return confirm('Tem certeza que deseja excluir?')">
+                <img src="/imagens/3017912_annul_cancel_clean_delete_eliminate_icon.png" />
+              </a>
+            </td>
            </tr>
+           
          <% }) %>
         </tbody>
       </table>
@@ -35,6 +51,6 @@
       </ul>
     </p>
     <br>
-    <a href="/new">Cadastrar novo</a>
+    <a id="cadastro" href="/new">Cadastrar novo</a>
   </body>
 </html>

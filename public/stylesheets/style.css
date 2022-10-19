@@ -1,16 +1,119 @@
 body {
   padding: 50px;
+  position: absolute; 
+  
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("https://www.colegiosaojudas.com.br/wp-content/uploads/2018/08/AdobeStock_88007091-e1534876731904.jpeg");
+
+}
+td { background: gray; padding:15px; border-radius: 5px; }
+table { border-spacing: 4px; }
+
+#cadastro{
+ 
+  color: blue;
+  background-color: #ffc;
 }
 
 a {
-  color: #00B7FF;
-}
-table thead tr {
-  background-color: #ccc;
+  color: rgb(28, 42, 108);
 }
 
+
+td {
+    background: #FFC;
+}
+
+table thead tr {
+  background-color: cadetblue;
+}
 table tr :hover{
   cursor: pointer;
-  background-color: #ccc;
+  background-color: cadetblue;
   }
+
+  * {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    border: 0;
+}
+
+body, input, select, textarea, button {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: black;
+}
+
+.grupo:before, .grupo:after {
+    content: " ";
+    display: table;
+}
+
+.grupo:after {
+    clear: both;
+}
+
+.campo {
+    margin-bottom: 1em;
+}
+
+.campo label {
+    margin-bottom: 0.2em;
+    color: whitesmoke;
+    display: block;
+}
+
+fieldset.grupo .campo {
+    float:  left;
+    margin-right: 1em;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="number"],
+.campo input[type="tel"],
+.campo select,
+.campo textarea {
+    padding: 0.2em;
+    border: 1px solid #CCC;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.campo select option {
+    padding-right: 1em;
+}
+
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+    background: #FFC;
+}
+
+.campo label.checkbox {
+    color: #000;
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.botao {
+    font-size: 1.5em;
+    background: #F90;
+    border: 0;
+    margin-bottom: 1em;
+    color: #FFF;
+    padding: 0.2em 0.6em;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.botao:hover {
+    background: #FB0;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
+
+.botao, select, label.checkbox {
+    cursor: pointer;
+}

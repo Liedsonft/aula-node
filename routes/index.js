@@ -5,17 +5,35 @@ const db = require("../db");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  db.findCustomers()
+
+ const titulo = req.query.titulo;
+ const ano= req.query.ano;
+  db.findCustomers(titulo, ano)
   .then (customers =>{
     console.log (customers)
-     res.render('index', { title: 'Express', customers });
+     res.render('index', { title: 'Livros', customers });
   })
   .catch (error => console.log(error))
  
 });
 
-router.get ('/new', (request, response)=>{
-  response.render ('customer', {title: 'Cadastro'})
+router.get ('/new', (request,response) => {
+  response.render ('customer', {title: 'Cadastro', customer: {}})
+})
+
+router.get ('/edit/:customerId', (request, response) => {
+  const id = request.params.customerId;
+  db.findCustomer(id)
+    .then (customer => response.render("customer",{ title:"Edit", customer}))
+    .catch (error => console.log(error))
+
+})
+
+router.get ('/delete/:customerId', (request, response) => {
+  const id = request.params.customerId
+  db.deleteCustomers(id)
+    .then (result => response.redirect("/"))
+    .catch (error => console.log(error))
 })
 
 router.post  ('/new', (request, response) => {
@@ -24,12 +42,16 @@ router.post  ('/new', (request, response) => {
 
   if (request.body.ano && !/[0-9]+/.test(request.body.ano))
   return response.redirect ("/new?error = O campo idade é numérico")
-  
+
+  const id = request.body.id;
   const titulo = request.body.titulo;
   const ano = parseInt(request.body.ano);
   const autor = request.body.autor;
+  const customer = {titulo, autor, ano}
+  const promise = id? db.updateCustomers(id ,customer)
+                    : db.insertCustomers (customer)
 
-  db.insertCustomers ({titulo, ano, autor})
+ promise
     .then (result => {
       result.redirect ("/")
     })
