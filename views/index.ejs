@@ -10,16 +10,17 @@
       <table>
         <thead>
           <tr>
-            <td >Título</td>
-            <td>Autor</td>
-            <td>Ano</td>
-            <td>Acões</td>
-            <td>Filtros</td>
-            <td><a href="?titulo=-1 "> Z-A </a></td>
-            <td><a href="?titulo=1"> A-Z </a></td>
-            <td><a href="?ano=1&titulo=1"> 1-9 </a></td>
-            <td><a href="?ano=-1"> 9-1 </a></td>
-          </tr> 
+            <td> <a href="?titulo=1" title="Ordem alfabética">Título</td>
+            <td>  <a href="?autor=1"title= "Ordem alfabética">Autor</td>
+            <td> <a href="?ano=1" title="Ordem crescente">Ano</td>
+            <td> Acões</td>
+            <td> Filtros </td>
+            <td> <a href="?titulo=1" title="Ordem alfabética"> Título A-Z </td>
+            <td> <a href="?autor=1" title="Ordem Z-A"> Autor A-Z </td>
+            <td> <a href="?ano=1" title="Ordem crescente">Mais antigos</td>
+            <td> <a href="?ano=-1" title="Ordem decrescente">Mais recentes</td>
+            
+           
         </thead>
         <tbody>
              <% customers.forEach(item => {

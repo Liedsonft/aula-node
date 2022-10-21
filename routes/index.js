@@ -7,14 +7,58 @@ const db = require("../db");
 router.get('/', function(req, res, next) {
 
  const titulo = req.query.titulo;
+ const autor = req.query.autor;
  const ano= req.query.ano;
-  db.findCustomers(titulo, ano)
+
+ if (titulo == undefined && autor == undefined && ano != undefined && ano == 1)  {
+  db.findCustomers("ano")
   .then (customers =>{
     console.log (customers)
      res.render('index', { title: 'Livros', customers });
   })
   .catch (error => console.log(error))
  
+ }  
+
+ if (titulo == undefined && autor == undefined && ano != undefined)  {
+  db.findCustomers("antigo")
+  .then (customers =>{
+    console.log (customers)
+     res.render('index', { title: 'Livros', customers });
+  })
+  .catch (error => console.log(error))
+}
+ 
+ 
+
+ if (titulo == undefined && autor != undefined && ano == undefined)  {
+  db.findCustomers("autor")
+  .then (customers =>{
+    console.log (customers)
+     res.render('index', { title: 'Livros', customers });
+  })
+
+  .catch (error => console.log(error))
+  db.findCustomers("titulo")
+  .then (customers =>{
+    console.log (customers)
+     res.render('index', { title: 'Livros', customers });
+  })
+  .catch (error => console.log(error))
+}
+db.findCustomers("titulo")
+.then (customers =>{
+  console.log (customers)
+   res.render('index', { title: 'Livros', customers });
+})
+
+.catch (error => console.log(error))
+db.findCustomers("titulo")
+.then (customers =>{
+  console.log (customers)
+   res.render('index', { title: 'Livros', customers });
+})
+.catch (error => console.log(error))
 });
 
 router.get ('/new', (request,response) => {

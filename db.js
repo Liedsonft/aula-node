@@ -10,10 +10,20 @@ mongoClient.connect("mongodb://localhost:27017",)
                       
 ;
 
-function findCustomers(titulo=1, ano=1){
+function findCustomers(sort){
+    var obj = {titulo: 1}
+    if (sort == "ano") {
+        obj = {ano: 1}
+
+    } else if (sort =="antigo"){
+        obj = {ano : -1}
+    
+    } else if (sort == "autor") {
+        obj = {autor: 1}}
+
 return global.connection
     .collection("livros")
-    .find({}).sort({ano:ano,titulo: titulo})
+    .find({}).sort(obj)
     .toArray()
 }
 function findCustomer (id) {
