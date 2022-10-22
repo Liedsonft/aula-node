@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
  const autor = req.query.autor;
  const ano= req.query.ano;
 
- if (titulo == undefined && autor == undefined && ano != undefined && ano == 1)  {
+ if (ano == 1)  {
   db.findCustomers("ano")
   .then (customers =>{
     console.log (customers)
@@ -18,9 +18,9 @@ router.get('/', function(req, res, next) {
   })
   .catch (error => console.log(error))
  
- }  
+ } 
 
- if (titulo == undefined && autor == undefined && ano != undefined)  {
+ if ( ano == -1)  {
   db.findCustomers("antigo")
   .then (customers =>{
     console.log (customers)
@@ -29,37 +29,23 @@ router.get('/', function(req, res, next) {
   .catch (error => console.log(error))
 }
  
- 
-
- if (titulo == undefined && autor != undefined && ano == undefined)  {
+ if (autor == 1 )  {
   db.findCustomers("autor")
   .then (customers =>{
     console.log (customers)
      res.render('index', { title: 'Livros', customers });
   })
-
   .catch (error => console.log(error))
+ } 
+
   db.findCustomers("titulo")
   .then (customers =>{
     console.log (customers)
      res.render('index', { title: 'Livros', customers });
   })
   .catch (error => console.log(error))
-}
-db.findCustomers("titulo")
-.then (customers =>{
-  console.log (customers)
-   res.render('index', { title: 'Livros', customers });
-})
 
-.catch (error => console.log(error))
-db.findCustomers("titulo")
-.then (customers =>{
-  console.log (customers)
-   res.render('index', { title: 'Livros', customers });
 })
-.catch (error => console.log(error))
-});
 
 router.get ('/new', (request,response) => {
   response.render ('customer', {title: 'Cadastro', customer: {}})
