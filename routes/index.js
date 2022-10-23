@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
  
  } 
 
- if ( ano == -1)  {
+ else if ( ano == -1)  {
   db.findCustomers("antigo")
   .then (customers =>{
     console.log (customers)
@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
   .catch (error => console.log(error))
 }
  
- if (autor == 1 )  {
+ else if (autor == 1 )  {
   db.findCustomers("autor")
   .then (customers =>{
     console.log (customers)
